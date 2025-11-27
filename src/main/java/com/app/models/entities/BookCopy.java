@@ -17,7 +17,7 @@ public class BookCopy {
     @Column(name = "book_copy_id")
     private Long id;
     @Enumerated(EnumType.STRING)
-    @Column(name = "condition", nullable = false, length = 50)
+    @Column(name = "book_condition", nullable = false, length = 50)
     private BookCondition condition;
 
     @ManyToOne
