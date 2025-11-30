@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface IMemberRepository extends JpaRepository<Member, Long> {
     Optional<Member> findByDui(String dui);
     Optional<Member> findByEmail(String email);
+    List<Member> findAllByIsActive(boolean active);
     List<Member> findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String firstName, String lastName);
     boolean existsByDui(String dui);
     boolean existsByEmail(String email);

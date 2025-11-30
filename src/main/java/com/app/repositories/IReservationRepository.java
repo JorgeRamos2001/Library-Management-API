@@ -18,4 +18,5 @@ public interface IReservationRepository extends JpaRepository<Reservation, Long>
     List<Reservation> findAllByReservationDateBetween(LocalDate startDate, LocalDate endDate);
     List<Reservation> findAllByStatus(ReservationStatus status);
     List<Reservation> findByMemberAndBook(Member member, Book book);
+    boolean existsByMemberAndBookAndStatus(Member member, Book book, ReservationStatus status);
 }

@@ -17,6 +17,6 @@ public class BookDTO {
     private String description;
     private LocalDate publicationDate;
     private String genre;
-    private int bookCopies;
+    private Long bookCopies;
     private List<AuthorDTO> authors;
 }

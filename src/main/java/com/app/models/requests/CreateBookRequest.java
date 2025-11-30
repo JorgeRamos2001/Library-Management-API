@@ -26,9 +26,9 @@ public class CreateBookRequest {
     private LocalDate publicationDate;
     @NotNull( message = "Book copies cannot be null")
     @Min( value = 1, message = "Book copies must be greater than 0")
-    private int bookCopies;
+    private Long bookCopies;
     @NotNull( message = "Genre cannot be null")
-    private int genreId;
+    private Long genreId;
     @NotNull( message = "Authors cannot be null")
     @NotEmpty( message = "At least one author must be selected")
     private List<Long> authorIds;

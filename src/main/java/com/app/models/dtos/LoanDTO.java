@@ -15,7 +15,7 @@ public class LoanDTO {
     private LocalDate dueDate;
     private LocalDate returnDate;
     private String status;
-    private int bookCopyId;
+    private Long bookCopyId;
     private BookDTO book;
     private MemberDTO member;
     private LibrarianDTO librarian;

@@ -1,6 +1,8 @@
 package com.app.models.enums;
 
 public enum ReservationStatus {
-    RESERVED,
-    CANCELLED
+    PENDING,
+    CANCELLED,
+    COMPLETED,
+    OVERDUE
 }

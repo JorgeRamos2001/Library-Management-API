@@ -3,7 +3,7 @@ package com.app.models.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -27,7 +27,7 @@ public class Member {
     @Column(name = "email", nullable = false, length = 100)
     private String email;
     @Column(name = "created_on", nullable = false)
-    private LocalDate createdOn;
+    private LocalDateTime createdOn;
     @Column(name = "is_active", nullable = false)
     private boolean isActive;
 
