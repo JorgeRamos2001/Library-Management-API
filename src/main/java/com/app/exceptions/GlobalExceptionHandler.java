@@ -4,6 +4,7 @@ import com.app.models.responses.ExceptionResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -99,5 +100,16 @@ public class GlobalExceptionHandler {
                 .timestamp(LocalDateTime.now())
                 .path(request.getDescription(false))
                 .build(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ExceptionResponse> handleBadCredentialsException(BadCredentialsException ex, WebRequest request) {
+        return new ResponseEntity<>(ExceptionResponse.builder()
+                .statusCode(HttpStatus.UNAUTHORIZED.value())
+                .exceptionType("BAD_CREDENTIALS")
+                .details("Credenciales incorrectas (Email o contraseña erróneos)")
+                .timestamp(LocalDateTime.now())
+                .path(request.getDescription(false))
+                .build(), HttpStatus.UNAUTHORIZED);
     }
 }

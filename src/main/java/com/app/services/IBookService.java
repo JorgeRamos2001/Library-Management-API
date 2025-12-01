@@ -14,6 +14,6 @@ public interface IBookService {
     List<BookDTO> findAllByTitleContainingIgnoreCase(String title);
     List<BookDTO> findAllByAuthorId(Long authorId);
     BookDTO update(Long id, CreateBookRequest book);
-    BookDTO updateAuthorsByBookId(UpdateBookAuthorRequest request);
+    BookDTO updateAuthorsByBookId(Long bookId, UpdateBookAuthorRequest request);
     void delete(Long id);
 }

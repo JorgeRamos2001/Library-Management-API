@@ -11,6 +11,7 @@ import com.app.repositories.ILibrarianRepository;
 import com.app.services.ILibrarianService;
 import com.app.utils.DuiValidator;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,7 @@ import java.util.List;
 public class LibrarianServiceImpl implements ILibrarianService {
 
     private final ILibrarianRepository librarianRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public LibrarianDTO save(CreateLibrarianRequest librarian) {
@@ -39,7 +41,7 @@ public class LibrarianServiceImpl implements ILibrarianService {
                 .phoneNumber(librarian.getPhoneNumber())
                 .address(librarian.getAddress())
                 .email(librarian.getEmail())
-                .password(librarian.getPassword())
+                .password(passwordEncoder.encode(librarian.getPassword()))
                 .hiredOn(LocalDate.now())
                 .librarianRole(LibrarianRoles.LIBRARIAN)
                 .isActive(true)
@@ -104,7 +106,7 @@ public class LibrarianServiceImpl implements ILibrarianService {
         librarianToUpdate.setPhoneNumber(librarian.getPhoneNumber());
         librarianToUpdate.setAddress(librarian.getAddress());
         librarianToUpdate.setEmail(librarian.getEmail());
-        librarianToUpdate.setPassword(librarian.getPassword());
+        librarianToUpdate.setPassword(passwordEncoder.encode(librarian.getPassword()));
         return mapToDTO(librarianRepository.save(librarianToUpdate));
     }
 

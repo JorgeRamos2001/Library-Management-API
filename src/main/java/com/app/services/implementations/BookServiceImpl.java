@@ -109,8 +109,8 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
-    public BookDTO updateAuthorsByBookId(UpdateBookAuthorRequest request) {
-        Book existingBook = bookRepository.findById(request.getBookId()).orElseThrow(() -> new ResourceNotFoundException("Book with id: " + request.getBookId() + " not found."));
+    public BookDTO updateAuthorsByBookId(Long bookId, UpdateBookAuthorRequest request) {
+        Book existingBook = bookRepository.findById(bookId).orElseThrow(() -> new ResourceNotFoundException("Book with id: " + request.getBookId() + " not found."));
 
         List<Author> authors = new ArrayList<>();
         request.getAuthorIds().forEach(authorId -> {
